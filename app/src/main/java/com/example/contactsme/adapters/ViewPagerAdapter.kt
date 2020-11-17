@@ -1,18 +1,21 @@
 package com.example.contactsme.adapters
 
+
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
-import androidx.fragment.app.FragmentStatePagerAdapter
 
-class ViewPagerAdapter(supportFramentManger: FragmentManager): FragmentPagerAdapter(supportFramentManger,
+
+
+class ViewPagerAdapter(supportFragmentManger: FragmentManager): FragmentPagerAdapter(supportFragmentManger,
     BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
+
 
     private val mFragmentList = ArrayList<Fragment>()
     private val mFragmentTitle = ArrayList<String>()
 
     override fun getItem(position: Int): Fragment {
-        return mFragmentList [position]
+        return mFragmentList[position]
     }
 
     override fun getCount(): Int {
@@ -23,7 +26,7 @@ class ViewPagerAdapter(supportFramentManger: FragmentManager): FragmentPagerAdap
         return mFragmentTitle[position]
     }
 
-    fun addFragment(fragment: Fragment,title:  String){
+    fun addFragment(fragment: Fragment, title: String) {
         mFragmentList.add(fragment)
         mFragmentTitle.add(title)
     }
