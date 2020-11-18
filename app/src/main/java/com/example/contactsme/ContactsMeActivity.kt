@@ -10,14 +10,14 @@ class ContactsMeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        setupTabs()
-    }
+        val images = listOf(
+            R.drawable.cast_1,
+            R.drawable.cast_2,
+            R.drawable.cast_3
+        )
 
-    private fun setupTabs() {
-        val adapter = ViewPagerAdapter(supportFragmentManager)
-        adapter.addFragment(TabFragment1(), "Home")
-        adapter.addFragment(TabFragment2(), "Settings")
-        adapter.addFragment(TabFragment3(), "Favourites")
+        val adapter = ViewPagerAdapter(images)
         viewPager.adapter = adapter
     }
+
 }

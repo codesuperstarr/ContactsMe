@@ -1,33 +1,33 @@
 package com.example.contactsme.adapters
 
 
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentPagerAdapter
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
+import com.example.contactsme.R
+import kotlinx.android.synthetic.main.item_view_pager.view.*
 
 
+class ViewPagerAdapter(val images:List<Int>):
+    RecyclerView.Adapter<ViewPagerAdapter.ViewPagerViewHolder>(){
 
-class ViewPagerAdapter(supportFragmentManger: FragmentManager): FragmentPagerAdapter(supportFragmentManger,
-    BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
+    inner class ViewPagerViewHolder(itemView: View): RecyclerView.ViewHolder(itemView)
 
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewPagerViewHolder {
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_view_pager, parent, false)
+        return ViewPagerViewHolder(view)
 
-    private val mFragmentList = ArrayList<Fragment>()
-    private val mFragmentTitle = ArrayList<String>()
-
-    override fun getItem(position: Int): Fragment {
-        return mFragmentList[position]
     }
 
-    override fun getCount(): Int {
-        return mFragmentList.size
+    override fun getItemCount(): Int {
+        return images.size
     }
 
-    override fun getPageTitle(position: Int): CharSequence? {
-        return mFragmentTitle[position]
+    override fun onBindViewHolder(holder: ViewPagerViewHolder, position: Int) {
+        val curImage = images[position]
+        holder.itemView.ivImage.setImageResource(curImage)
+
     }
 
-    fun addFragment(fragment: Fragment, title: String) {
-        mFragmentList.add(fragment)
-        mFragmentTitle.add(title)
-    }
 }
